@@ -6,7 +6,7 @@ if [ -f .env ]; then
 fi
 
 export ETH_RPC_URL=http://localhost:8545
-L2_URL=https://horizen.calderachain.xyz/http
+L2_URL=https://horizen-testnet.rpc.caldera.xyz/http
 POLL_INTERVAL=15
 TIMES_POLLED=0
 

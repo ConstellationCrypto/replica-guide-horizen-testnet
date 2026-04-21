@@ -1,9 +1,9 @@
 {
-    "chainId": 8453,
-    "depositContractAddress": "0x0000000000000000000000000000000000000000",
-    "optimism": {
-      "eip1559Elasticity": 0,
-      "eip1559Denominator": 0
-    }
+  "chainId": 84532,
+  "depositContractAddress": "0x0000000000000000000000000000000000000000",
+  "optimism": {
+    "eip1559Elasticity": 6,
+    "eip1559Denominator": 250,
+    "eip1559DenominatorCanyon": 250
   }
-  
+}

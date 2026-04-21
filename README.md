@@ -1,4 +1,4 @@
-# Horizen Mainnet Replica Guide
+# Horizen Testnet Replica Guide
 
 1. Set `L1_RPC_URL` in `up.sh`
 2. Run `make up`.
