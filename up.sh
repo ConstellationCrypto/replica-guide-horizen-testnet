@@ -13,7 +13,7 @@ OP_NODE="$PWD/op-node"
 function wait_up {
   echo -n "Waiting for $1 to come up..."
   i=0
-  until curl -s -f -o /dev/null "$1"
+  until curl -s -f -o /dev/null -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}' "$1"
   do
     echo -n .
     sleep 0.25
@@ -27,8 +27,8 @@ function wait_up {
   echo "Done!"
 }
 
-openssl rand -hex 32 &> jwt-secret.txt
-openssl rand -hex 32 &> p2p-node-key.txt
+[ -s jwt-secret.txt ] || openssl rand -hex 32 > jwt-secret.txt
+[ -s p2p-node-key.txt ] || openssl rand -hex 32 > p2p-node-key.txt
 
 # Bring up L2.
 (
