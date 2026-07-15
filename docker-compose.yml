@@ -1,5 +1,3 @@
-version: '3.4'
-
 volumes:
   reth_data:
   op_log:
@@ -7,7 +5,7 @@ volumes:
 
 services:
   l2:
-    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-reth:v1.11.5
+    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-reth:v2.3.3
     restart: always
     environment:
       - RUST_BACKTRACE=full
@@ -44,11 +42,13 @@ services:
       --ws.port 8546
       --ws.origins *
       --ipcdisable
+      --disable-discovery
+      --trusted-peers=enode://50bdf7248eece3dbe14bc61e491ba4838a904057db17fa380211ab11f7064f40b4f3acafba4e9b45aa9e118a989bb280c6062f03487ebbe0cf5f9e6f21436616@afe7a590bf2984de7b75560a4371d455-73dc70c4aa4fb9fa.elb.us-west-2.amazonaws.com:30303
   
   op-node:
     depends_on:
       - l2
-    image: "us-docker.pkg.dev/oplabs-tools-artifacts/images/op-node:v1.16.12"
+    image: "us-docker.pkg.dev/oplabs-tools-artifacts/images/op-node:v1.19.2"
     platform: linux/amd64
     stop_signal: SIGINT
     stop_grace_period: 30s
@@ -78,6 +78,7 @@ services:
       --metrics.port=7300
       --pprof.enabled
       --rpc.enable-admin
+      --syncmode=execution-layer
     ports:
       - "7545:8545"
       - "9003:9003"
