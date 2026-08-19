@@ -55,6 +55,7 @@ services:
     environment:
       OP_NODE_L1_BEACON_IGNORE: "true"
       OP_NODE_ROLLUP_L1_CHAIN_CONFIG: /work/l1_chain_config.json
+      OP_NODE_OVERRIDE_ISTHMUS: "1787331600"
     restart: always
     command: >
       op-node
